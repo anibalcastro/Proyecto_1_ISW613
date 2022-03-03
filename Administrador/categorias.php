@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Categorias</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <?php echo '<link href="categorias.css" type="text/css" rel="stylesheet" >'; ?>
@@ -29,6 +30,41 @@
      
     </nav>
   </header>
+
+  <div class="jumbotron">
+      <h1 class="display-4">Categories</h1>
+      <div  class="linea_100"></div> 
+  </div>
+
+  <table class="table">
+  <thead class="table-dark">
+    <tr>
+        <th>Category</th>
+        <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+        <td>Deportes</td>
+        <td> <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-pencil-align-left" aria-hidden="true"></span>Edit
+          </button> | <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-trash-align-left" aria-hidden="true"></span>Delete
+          </button>
+        </td>
+  </tr>
+
+  <tr>
+        <td>Acción</td>
+        <td> <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-pencil-align-left" aria-hidden="true"></span>Edit
+          </button> | <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-trash-align-left" aria-hidden="true"></span>Delete
+          </button>
+        </td>
+  </tr>
+  </tbody>
+</table>
 </body>
 
 </html>

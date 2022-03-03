@@ -1,3 +1,9 @@
+:root{
+    --altura-linea-100 : 0.50px;
+    --color-linea-100 :  rgb(255, 246, 246);
+}
+
+
 #logo_empresa {
     width: 22%;
     margin-left: 10px;
@@ -10,3 +16,22 @@
     align-items: center;
 }
 
+.jumbotron{
+    background-color: #56baed;
+}
+
+.linea_100{
+    height: var(--altura-linea-100);
+    background-color: var(--color-linea-100);
+    width: 80%;
+}
+
+.table{
+    margin: auto;
+    width: 70%;
+
+}
+
+table th, tr{
+    text-align: center;
+}
