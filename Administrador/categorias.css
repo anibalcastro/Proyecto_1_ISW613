@@ -16,7 +16,8 @@
 }
 
 .jumbotron{
-    background-color: #56baed;
+    background-color: #0a4275;
+    color:white;
 }
 
 .linea_100{
@@ -68,3 +69,15 @@ footer{
     color: white;
 }
 
+
+/*******************************************************************************************************/
+/*Nueva Categoria formulario*/
+.form-control{
+    margin-left: 20px;
+    width: 60%;
+}
+
+#btnSave{
+    margin-left: 20px;
+    margin-top: 10px;
+}
