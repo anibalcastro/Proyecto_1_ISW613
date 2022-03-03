@@ -3,7 +3,6 @@
     --color-linea-100 :  rgb(255, 246, 246);
 }
 
-
 #logo_empresa {
     width: 22%;
     margin-left: 10px;
@@ -23,15 +22,49 @@
 .linea_100{
     height: var(--altura-linea-100);
     background-color: var(--color-linea-100);
-    width: 80%;
+    width: 88%;
 }
 
 .table{
     margin: auto;
-    width: 70%;
+    width: 80%;
 
 }
 
 table th, tr{
     text-align: center;
 }
+
+#edit{
+    background-color: green;
+    color: white;
+}
+
+#delete{
+    background-color: red;
+    color:white;
+}
+
+.btnAdd{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    margin-top: 20px;
+}
+
+footer{
+    margin-top: 50px;
+}
+
+.submenu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#item{
+    color: white;
+}
+
