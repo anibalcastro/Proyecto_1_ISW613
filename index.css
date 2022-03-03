@@ -284,3 +284,9 @@ html {
   #btn_login{
       margin-right: 10px;
   }
+
+  .submenu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
