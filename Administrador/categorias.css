@@ -1,20 +1,12 @@
-.menubarra{
-    margin: auto;
-}
-
 #logo_empresa {
     width: 22%;
     margin-left: 10px;
 }
 
-.navMenu{
+.header{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    flex-direction: row;
     align-items: center;
 }
 
-.encLogo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
