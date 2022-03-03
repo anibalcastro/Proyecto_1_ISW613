@@ -29,12 +29,6 @@
   <div class="wrapper fadeInDown">
     <div id="formContent">
 
-      <!-- Tabs header -->
-      <div id="encabezado" class="fadeIn" first>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Telefe_Noticias_logo_2_%282018%29.png" id="logo_empresa" alt="icon" srcset="logo icon">
-        <button id="btn_login" type="button" class="btn btn-dark"><i class="fa fa-user" aria-hidden="true"></i>Log in</button>
-      </div>
-
       <!-- Icon -->
       <div class="fadeIn second">
         <img src="https://static.vecteezy.com/system/resources/previews/002/318/271/non_2x/user-profile-icon-free-vector.jpg" id="icon" alt="User Icon" />
