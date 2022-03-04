@@ -306,6 +306,10 @@ select::placeholder {
 
 /* OTHERS */
 
+#nav{
+  width: 100%;
+}
+
 *:focus {
   outline: none;
 }
