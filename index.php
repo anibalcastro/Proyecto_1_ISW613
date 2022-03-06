@@ -44,7 +44,7 @@
 
       <!-- Remind Passowrd -->
       <div id="formFooter">
-        <a class="underlineHover" href="http://utnweb.com/web2/ISW-613-WORKSHOP/Workshop4/registro.php">Create user.</a>
+        <a class="underlineHover" href="http://utnweb.com/web2/Proyecto_1_ISW613/Registro/registro.php">Create user.</a>
       </div>
 
     </div>
