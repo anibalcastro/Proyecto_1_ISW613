@@ -75,3 +75,26 @@ table th, tr{
     margin: auto;
     margin-top: 20px;
 }
+
+.form-control{
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 40%;
+}
+
+#category{
+    
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 30%;
+    height: 38px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#btnSave{
+    margin-left: 20px;
+    margin-top: 10px;
+}
