@@ -61,7 +61,7 @@
 
       <!-- Remind Passowrd -->
       <div id="formFooter">
-        <a class="underlineHover" href="#">I have user</a>
+        <a class="underlineHover" href="http://utnweb.com/web2/Proyecto_1_ISW613/index.php">I have user</a>
       </div>
   </div>
 
