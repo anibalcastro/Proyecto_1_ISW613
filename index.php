@@ -1,3 +1,21 @@
+<?php
+  //Si hay un mensaje de error
+  if(!empty($_REQUEST['status'])) {
+    //captura el error
+    $error = $_REQUEST['status'];
+
+    //lo compara
+    if($error == "Constraseña-Incorrecta"){
+      //muestra alerta
+      echo '<script language="javascript">alert("Usuario o contraseña incorrectas");</script>';
+    }
+  }
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +53,9 @@
       </div>
 
       <!-- Login Form -->
-      <form action="login.php" method="POST">
-        <input type="text" id="email" class="fadeIn second" name="email" placeholder="Email" required="true">
-        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required="true">
+      <form action="lo_index.php" method="POST">
+        <input type="text" id="email" class="fadeIn second" name="emailU" placeholder="Email" required="true">
+        <input type="password" id="password" class="fadeIn third" name="passwordU" placeholder="Password" required="true">
         <input type="submit" class="fadeIn fourth" value="Log In">
       </form>
 
