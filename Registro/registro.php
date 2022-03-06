@@ -21,7 +21,10 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Telefe_Noticias_logo_2_%282018%29.png"
           id="logo_empresa" alt="icon" srcset="logo icon">
       </a>
-      <button id="btn_login" class="btn btn-dark my-2 my-sm-0" type="submit">Log in</button>
+      <a id="btn_login" href="http://utnweb.com/web2/Proyecto_1_ISW613/index.php" class="btn btn-success btn btn-dark my-2 my-sm-0">Log in</a>
+
+      <!------ 
+      <a id="btn_login" class="btn btn-dark my-2 my-sm-0" type="submit">Log in</a>---------->
     </nav>
   </header>
 
