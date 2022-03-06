@@ -45,3 +45,33 @@ footer{
     color: white;
 }
 
+
+
+.table{
+    margin: auto;
+    width: 80%;
+
+}
+
+table th, tr{
+    text-align: center;
+}
+
+#edit{
+    background-color: green;
+    color: white;
+}
+
+#delete{
+    background-color: red;
+    color:white;
+}
+
+.btnAdd{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+    margin-top: 20px;
+}
