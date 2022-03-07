@@ -1,3 +1,16 @@
+<?php
+  session_start();
+  $user = $_SESSION['user'];
+
+  if(!$user or $user['role_id']!= 1 ){
+    header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
+  }
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
