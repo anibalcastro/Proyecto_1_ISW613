@@ -12,7 +12,7 @@
             session_start();
             $_SESSION['user'] = $user;
 
-            if ($user['role_id'] === 1){
+            if ($user['role_id'] == 1){
                 //redirecciona a administrador
                 header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/categorias.php?status=success&message=Bienvenido');
             }
