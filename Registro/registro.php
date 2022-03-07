@@ -1,3 +1,21 @@
+<?php
+  //Si hay un mensaje de error
+  if(!empty($_REQUEST['status'])) {
+    //captura el error
+    $error = $_REQUEST['message'];
+
+    //lo compara
+    if($error == "Error-Fill-the-blanks"){
+      //muestra alerta
+      echo '<script language="javascript">alert("Por favor llenar los campos");</script>';
+    }
+  }
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,21 +61,21 @@
 
       <!-- Login Form -->
       <form action="lo_registro.php" method="POST">
-        <input type="text" id="nameUser" class="fadeIn first" name="nameU" placeholder="First Name">
-        <input type="text" id="lastUser" class="fadeIn first" name="lastU" placeholder="LastName">
-        <input type="text" id="emailUser" class="fadeIn third" name="emailU" placeholder="Email">
-        <input type="password" id="passwordUser" class="fadeIn fourth" name="passwordU" placeholder="Password">
-        <input type="text" id="adress1" class="fadeIn second" name="adress1U" placeholder="Adress">
+        <input type="text" id="nameUser" class="fadeIn first" name="nameU" placeholder="First Name" required="true">
+        <input type="text" id="lastUser" class="fadeIn first" name="lastU" placeholder="LastName" required="true">
+        <input type="text" id="emailUser" class="fadeIn third" name="emailU" placeholder="Email" required="true">
+        <input type="password" id="passwordUser" class="fadeIn fourth" name="passwordU" placeholder="Password" required="true">
+        <input type="text" id="adress1" class="fadeIn second" name="adress1U" placeholder="Adress" required="true">
         <input type="text" id="adress2" class="fadeIn second" name="adress2U" placeholder="Adress 2">
-        <select name="countryU" id="country" class="fadeIn second">
+        <select name="countryU" id="country" class="fadeIn second" required="true">
           <option disabled selected>Country</option>
           <option value="Costa Rica">Costa Rica</option>
           <option value="Estados Unidos">Estados Unidos</option>
           <option value="Panamá">Panamá</option>
         </select>
-        <input type="text" id="city" class="fadeIn second" name="cityU" placeholder="City">
-        <input type="text" id="zip" class="fadeIn second" name="zipU" placeholder="Zip/Postal Code">
-        <input type="text" id="phone" class="fadeIn second" name="phoneU" placeholder="Phone Number">
+        <input type="text" id="city" class="fadeIn second" name="cityU" placeholder="City" required="true">
+        <input type="text" id="zip" class="fadeIn second" name="zipU" placeholder="Zip/Postal Code" required="true">
+        <input type="text" id="phone" class="fadeIn second" name="phoneU" placeholder="Phone Number" required="true">
 
         <input type="submit" class="fadeIn fourth" value="Sign up">
       </form>
