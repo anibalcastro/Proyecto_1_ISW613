@@ -58,21 +58,10 @@
     <tbody>
       <tr>
         <td>Deportes</td>
-        <td> <button id="edit" type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-pencil-align-left" aria-hidden="true"></span>Edit
-          </button> | <button id="delete" type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash-align-left" aria-hidden="true"></span>Delete
-          </button>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Acción</td>
-        <td> <button id="edit" type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-pencil-align-left" aria-hidden="true"></span>Edit
-          </button> | <button id="delete" type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash-align-left" aria-hidden="true"></span>Delete
-          </button>
+        <td> 
+          <a id="edit" href="http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/ceCategoria.php?status=success&message=1" class="btn btn-default" aria-label="Left Align">Edit</a>
+          | 
+           <a id="delete" type="button" class="btn btn-default" aria-label="Left Align">Delete</a>
         </td>
       </tr>
     </tbody>
