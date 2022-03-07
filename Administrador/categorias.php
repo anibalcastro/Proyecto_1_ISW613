@@ -6,7 +6,7 @@
     header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
   }
 
-
+  $nombreUsuario = $user['first_name'];
 
 ?>
 
@@ -34,7 +34,7 @@
             id="logo_empresa" alt="icon" srcset="logo icon">
       </a>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-dark" disabled="disabled">Administrador</button>
+        <button type="button" class="btn btn-dark" disabled="disabled">Admin <?php $nombreUsuario ?></button>
         <button type="button" class="btn btn-dark">Categories</button>
         <button type="button" class="btn btn-dark">Log out</button>
       </div>
