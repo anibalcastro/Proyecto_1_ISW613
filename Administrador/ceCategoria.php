@@ -1,34 +1,33 @@
 <?php
-  session_start();
-  $user = $_SESSION['user'];
+session_start();
+$user = $_SESSION['user'];
 
-  include('funcionesAdmin.php');
-  $id = "";
-  $nombreCategoria = "";
+include ('funcionesAdmin.php');
+$id = "";
+$nombreCategoria = "";
 
-
-  if(!$user or $user['role_id']!= 1 ){
+if (!$user or $user['role_id'] != 1)
+{
     header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
-  }
+}
 
-  $nombreUsuario = $user['first_name'];
+$nombreUsuario = $user['first_name'];
 
-  if(!empty($_REQUEST['status'])) {
+if (!empty($_REQUEST['status']))
+{
     //captura el id
     $id = $_REQUEST['message'];
     $resultado = datosCategoria($id);
 
     $nombreCategoria = implode($resultado[0]);
     $accion = "Editar";
-  }
-  else{
+}
+else
+{
     $accion = "Agregar";
-  }
-
-  
- 
-
+}
 ?>
+
 
 
 <!DOCTYPE html>

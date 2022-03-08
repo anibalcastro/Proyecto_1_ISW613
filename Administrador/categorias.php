@@ -1,16 +1,17 @@
 <?php
-  session_start();
-  $user = $_SESSION['user'];
+session_start();
+$user = $_SESSION['user'];
 
-  if(!$user or $user['role_id']!= 1 ){
+if (!$user or $user['role_id'] != 1)
+{
     header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
-  }
+}
 
-  $nombreUsuario = $user['first_name'];
+$nombreUsuario = $user['first_name'];
 
-  include('funcionesAdmin.php');
+include ('funcionesAdmin.php');
 
-  $categorias = consultarCategorias();
+$categorias = consultarCategorias();
 
 ?>
 
