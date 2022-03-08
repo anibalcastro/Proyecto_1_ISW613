@@ -22,7 +22,7 @@
     $accion = "Editar";
   }
   else{
-    $accion = "Nueva";
+    $accion = "Agregar";
   }
 
   
@@ -66,7 +66,7 @@
 
     <!-- Titulo -->
     <div class="jumbotron">
-        <h1 class="display-4">Agregar Categories</h1>
+        <h1 class="display-4"><?php echo $accion ?> Categories</h1>
         <div class="linea_100"></div>
     </div>
 

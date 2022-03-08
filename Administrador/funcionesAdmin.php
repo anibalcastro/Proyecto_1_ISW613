@@ -47,7 +47,7 @@ function editarCategoria($id, $name){
  */
 function agregarCategoria($name){
     $connection = conexion();
-    $sqlAgregar = "INSERT INTO  `cateogires` (`name`) VALUES (`$name`)";
+    $sqlAgregar = "INSERT INTO `categories`(`name`) VALUES ('$name')";
     echo $sqlAgregar;
     mysqli_query($connection, $sqlAgregar);
     mysqli_close($connection);

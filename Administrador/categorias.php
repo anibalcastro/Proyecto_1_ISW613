@@ -83,7 +83,7 @@
   </table>
 
   <div class="btnAdd">
-  <button type="button" class="btn btn-dark">Add New</button>
+  <a type="button" href="http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/ceCategoria.php" class="btn btn-dark">Add New</a>
   </div>
   
 
