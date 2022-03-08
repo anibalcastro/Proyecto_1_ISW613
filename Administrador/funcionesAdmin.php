@@ -13,11 +13,11 @@ function conexion(){
 function datosCategoria($id){
     $connection = conexion();
 
-    $sqlDatos = "SELECT * FROM `categories` WHERE id = $id";
+    $sqlDatos = "SELECT `name` FROM `categories` WHERE id = $id";
     $result = mysqli_query($connection, $sqlDatos);
 
     mysqli_close($connection);
-    return $result->fetch_array(MYSQLI_ASSOC);
+    return $result->fetch_all();
 }
 
 /**
