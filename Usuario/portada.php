@@ -34,8 +34,11 @@
       </a>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-dark" disabled="disabled"><?php echo $nombreUsuario ?></button>
-        <button type="button" class="btn btn-dark">Categories</button>
-        <button type="button" class="btn btn-dark">Log out</button>
+        <a type="button" href="#" class="btn btn-dark">News Source</a>
+        <form action="logout.php" method="post">
+        <button type="submit" class="btn btn-dark">Log out</button>
+        </form>
+        
       </div>
       </div>
 
