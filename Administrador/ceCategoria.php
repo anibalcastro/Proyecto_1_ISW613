@@ -43,8 +43,10 @@
         </a>
         <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-dark" disabled="disabled">admin - <?php echo $nombreUsuario ?></button>
-            <button type="button" class="btn btn-dark">Categories</button>
-            <button type="button" class="btn btn-dark">Log out</button>
+            <a type="button"  href="http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/categorias.php" class="btn btn-dark">Categories</a>
+            <form action="" method="post">
+              <button type="button" class="btn btn-dark">Log out</button>
+            </form>
         </div>
         </div>
 
