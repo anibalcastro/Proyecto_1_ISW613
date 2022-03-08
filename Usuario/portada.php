@@ -36,7 +36,7 @@
         <button type="button" class="btn btn-dark" disabled="disabled"><?php echo $nombreUsuario ?></button>
         <a type="button" href="#" class="btn btn-dark">News Source</a>
         <form action="logout.php" method="post">
-        <button type="submit" class="btn btn-dark">Log out</button>
+          <button type="submit" class="btn btn-dark">Log out</button>
         </form>
         
       </div>

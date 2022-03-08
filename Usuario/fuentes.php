@@ -20,8 +20,10 @@
       </a>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-dark" disabled="disabled">Nombre</button>
-        <button type="button" class="btn btn-dark">News Source</button>
-        <button type="button" class="btn btn-dark">Log out</button>
+        <button type="button" class="btn btn-dark" disabled="disabled">News Source</button>
+        <form action="logout.php" method="post">
+          <button type="submit" class="btn btn-dark">Log out</button>
+        </form>
       </div>
       </div>
 
