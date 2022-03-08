@@ -59,12 +59,12 @@ function agregarCategoria($name){
 function consultarCategorias(){
     $connection = conexion();
 
-    $sqlCategorias = "SELECT * FROM `categories`;";
+    $sqlCategorias = "SELECT `id`, `name` FROM `categories`;";
 
     $result = mysqli_query($connection, $sqlCategorias);
     mysqli_close($connection);
 
-    return $result->fetch_array(MYSQLI_ASSOC);
+    return $result->fetch_all();
 }
 
 

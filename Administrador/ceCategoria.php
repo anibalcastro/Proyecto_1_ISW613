@@ -62,6 +62,7 @@
     <!-- Cuerpo -->
     <div>
         <form action="" method="post">
+            <input type="hidden" id="dniCategory" name="idCategory">
             <input name="nameCategory" type="text" class="form-control" placeholder="Cateogry Name">
             <div class="linea_100"></div>
             <input id="btnSave" type="submit" name="btnSave" value="Save" class="btn btn-dark">

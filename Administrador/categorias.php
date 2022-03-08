@@ -8,6 +8,10 @@
 
   $nombreUsuario = $user['first_name'];
 
+  include('funcionesAdmin.php');
+
+  $categorias = consultarCategorias();
+
 ?>
 
 
@@ -59,14 +63,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Deportes</td>
-        <td> 
-          <a id="edit" href="http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/ceCategoria.php?status=success&message=1" class="btn btn-default" aria-label="Left Align">Edit</a>
+      <?php 
+        foreach($categorias as $iterador){
+          $nameCategory = $iterador[1];
+          $urlEditar = "http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/ceCategoria.php?status=success&message=".$iterador[0];
+          $urlEliminar ="http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/delete.php?status=success&message=".$iterador[0];
+
+          echo "
+          <tr>
+          <td> $nameCategory </td>
+          <td><a id=\"edit"."\" href=\"$urlEditar"."\"  class=\"btn btn-default"."\" aria-label=\"Left Align"."\">Edit</a>
           | 
-           <a id="delete" type="button" class="btn btn-default" aria-label="Left Align">Delete</a>
-        </td>
-      </tr>
+          <a id=\"delete"."\" href=\"$urlEliminar"."\"  class=\"btn btn-default"."\" aria-label=\"Left Align"."\">Delete</a> </td>
+          </tr>
+          ";
+        }  
+      ?>
     </tbody>
   </table>
 
