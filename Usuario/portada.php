@@ -8,6 +8,10 @@
 
   $nombreUsuario = $user['first_name']. " ". $user['last_name'];
 
+  include('funcionesUsuario.php');
+
+  $categorias = obtenerCategorias();
+
 
 
 ?>
@@ -49,12 +53,22 @@
     <h1 class="display-4">Your unique News Cover</h1>
     <div class="linea_100"></div>
     <div id="grupoBtn" class="btn-group flex-wrap" role="group" aria-label="Button group with nested dropdown">
+    <?php 
+    foreach($categorias as $categoria)
+    {
+    ?>
+      <a type="button" class="btn btn-secondary" href="#." value="<?php echo $categoria[0]?>"><?php echo "$categoria[1]"?></a>
+    <?php
+    }
+    ?>    
+    <!---
         <button type="button" class="btn btn-secondary">Portada</button>
         <button type="button" class="btn btn-secondary">Sucesos</button>
-        <button type="button" class="btn btn-secondary">Deportes</button>
+        <button type="button" class="btn btn-secondary">Deportes</button>1
         <button type="button" class="btn btn-secondary">Nacionales</button>
         <button type="button" class="btn btn-secondary">Internacionales</button>
         <button type="button" class="btn btn-secondary">Espectaculos</button>
+      !-->
     </div> 
 </div>
 
