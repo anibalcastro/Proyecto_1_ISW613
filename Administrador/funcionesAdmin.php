@@ -14,7 +14,7 @@ function datosCategoria($id)
 {
     $connection = conexion();
 
-    $sqlDatos = "SELECT `name` FROM `categories` WHERE id = $id";
+    $sqlDatos = "SELECT `name` FROM `categories` WHERE id = $id;";
     $result = mysqli_query($connection, $sqlDatos);
 
     mysqli_close($connection);
@@ -39,7 +39,7 @@ function eliminarCategoria(&$id)
 function editarCategoria($id, $name)
 {
     $connection = conexion();
-    $sqlEditar = "UPDATE `categories` SET `name`='$name' WHERE id = $id";
+    $sqlEditar = "UPDATE `categories` SET `name`='$name' WHERE id = $id;";
     mysqli_query($connection, $sqlEditar);
     mysqli_close($connection);
 
@@ -49,12 +49,40 @@ function editarCategoria($id, $name)
  * Agrega categorias
  */
 function agregarCategoria($name)
+{   $agrega = "no";
+    $valido = validarExistenciaCategoria($name);
+    echo $valido;
+
+    if($valido == "no")
+    {
+        $connection = conexion();
+        $agrega = "si";
+        $sqlAgregar = "INSERT INTO `categories`(`name`) VALUES ('$name');";
+        mysqli_query($connection, $sqlAgregar);
+        mysqli_close($connection);
+    }
+    else {
+        
+        header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/categorias.php?status=success&message=Category-exists');   
+    }
+    return $agrega;
+}
+
+function validarExistenciaCategoria(&$name)
 {
     $connection = conexion();
-    $sqlAgregar = "INSERT INTO `categories`(`name`) VALUES ('$name')";
-    echo $sqlAgregar;
-    mysqli_query($connection, $sqlAgregar);
+    $sqlValidar = "SELECT * FROM `categories` WHERE name = '$name' ;";
+    $existe = "no";
+
+    $result = mysqli_query($connection, $sqlValidar);
     mysqli_close($connection);
+
+    if (mysqli_num_rows($result) > 0)
+    {
+        $existe = "si";
+    }
+
+    return $existe;
 }
 
 /**

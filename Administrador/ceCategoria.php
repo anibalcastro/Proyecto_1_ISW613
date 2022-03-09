@@ -1,34 +1,48 @@
 <?php
+//inicia
 session_start();
+//variable user, informacion del usuario
 $user = $_SESSION['user'];
 
+//incluimos archivo
 include ('funcionesAdmin.php');
+
+//Variables
 $id = "";
 $nombreCategoria = "";
+$accion="";
+$message ="";
 
+//validamos que se encuentre logueado
+//validamos el rol
 if (!$user or $user['role_id'] != 1)
 {
-    header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
+  header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
 }
 
+//nombre de usuario
 $nombreUsuario = $user['first_name'];
 
 if (!empty($_REQUEST['status']))
-{
-    //captura el id
-    $id = $_REQUEST['message'];
-    $resultado = datosCategoria($id);
+{ 
+  //captura el mensaje
+  $message = $_REQUEST['message'];
 
+  if ($message == 'Category-exists'){
+    echo '<script language="javascript">alert("Error la categoria ya existe");</script>';
+  }
+  else{
+    $id = $message;
+    $resultado = datosCategoria($id);
     $nombreCategoria = implode($resultado[0]);
     $accion = "Editar";
+  }
 }
 else
 {
-    $accion = "Agregar";
+  $accion = "Nueva";
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">

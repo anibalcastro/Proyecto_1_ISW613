@@ -15,8 +15,16 @@ else {
     //Añadir uno nuevo
     $name = $_REQUEST['nameCategory'];
    
-    agregarCategoria($name);
-    header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/categorias.php?status=success&message=Category-was-added');
+    $categoryAdd = agregarCategoria($name);
+
+    if($categoryAdd == "si"){
+        header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/categorias.php?status=success&message=Category-was-added');
+    }
+    else 
+    {
+        header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Administrador/ceCategoria.php?status=success&message=Category-exists'); 
+    
+    }
 }
 
 ?>
