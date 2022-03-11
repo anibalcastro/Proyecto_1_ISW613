@@ -79,6 +79,8 @@ function getNewByCategories($categories, $id)
 
 function createSource($url, $name, $cateogoryId){
     //url/name/category_id/user_id 
+    $idUser = getIdUsuario();
+    
 }
 
 /**
@@ -88,13 +90,17 @@ function getIdSourceNews($source){
 
 }
 
-
-
 function createNews($title, $shortDescription, $linkNew, $date, $source, $category){
     //title / short_description / perman_link / fecha / news_source_id / user_id / category_id 
 
     $idSource = getIdSourceNews($source);
-    $idCategoria = getIdCategories($category);
+    $idCategory = getIdCategories($category);
+    $idUser = getIdUsuario();
+
+    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$title','$shortDescription','$linkNew','$date',$idSource,$idUser,$idCategory);";
+
+    echo $sqlInsert;
+    die;
 }
 
 
