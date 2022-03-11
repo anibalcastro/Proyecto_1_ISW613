@@ -35,7 +35,7 @@ function obtenerIdCategorias($nombre)
 
 function setUsuario($usuario)
 {
-    this->$User = $usuario;
+    $User = $usuario;
 }
 
 function getUsuario()
