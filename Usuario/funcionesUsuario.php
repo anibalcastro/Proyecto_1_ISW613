@@ -1,12 +1,18 @@
 <?php
-
-$User = "";
+/***
+ * Contains id user
+ */
+$idUser = 0;
 
 function conexion(){
     return mysqli_connect('127.0.0.1','root','','mynews');
 }
 
-function obtenerCategorias()
+/**
+ * Get all categories 
+ * id / name
+ */
+function getCategories()
 {
     
     $connection = conexion();
@@ -19,7 +25,11 @@ function obtenerCategorias()
     return $result->fetch_all();
 }
 
-function obtenerIdCategorias($nombre)
+
+/**
+ * Get id by specific categories.
+ */
+function getIdCategorias($nombre)
 {
     $categorias = obtenerCategorias();
     $id = 0;
@@ -33,14 +43,35 @@ function obtenerIdCategorias($nombre)
     return $id;
 }
 
-function setUsuario($usuario)
+/**
+ * Set Id User 
+ */
+function setIdUsuario($usuario)
 {
     $User = $usuario;
 }
 
-function getUsuario()
+/**
+ * Get Id user 
+ * Return $id
+ */
+function getIdUsuario()
 {
     return this->$User;
+}
+
+/**
+ * Get all news by Id User
+ */
+function getAllNewByIdUser($id){
+
+}
+
+/**
+ * Get news by Categories
+ */
+function getNewByCategories($categories, $id){
+
 }
 
 ?>

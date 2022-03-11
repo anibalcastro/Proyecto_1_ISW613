@@ -7,12 +7,12 @@
   }
 
   $nombreUsuario = $user['first_name']. " ". $user['last_name'];
+  $idUsuario = $user['id'];
 
   include('funcionesUsuario.php');
 
-  $categorias = obtenerCategorias();
-
-
+  $categorias = getCategories();
+  setIdUsuario($idUsuario);
 
 ?>
 
