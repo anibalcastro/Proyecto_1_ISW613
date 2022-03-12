@@ -18,7 +18,8 @@ function conexion(){
 /**
  * Validate exists categories 
  */
-function existsCategories($nombre){
+function existsCategories($nombre)
+{
     $categorias = getCategories();
     $id = 0;
     
@@ -49,7 +50,11 @@ function getCategories()
     return $result->fetch_all();
 }
 
-function setCategories($id){
+/**
+ * Set cateogories
+ */
+function setCategories($id)
+{
     $idCategory = this->$id;
 }
 
