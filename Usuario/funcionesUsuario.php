@@ -15,7 +15,9 @@ function conexion(){
 }
 
 ///CATEGORIES
-
+/**
+ * Validate exists categories 
+ */
 function existsCategories($nombre){
     $categorias = getCategories();
     $id = 0;
