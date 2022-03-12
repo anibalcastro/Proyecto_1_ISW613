@@ -1,4 +1,5 @@
 <?php 
+include('funcionesUsuario.php');
 
 $url = "http://feeds.feedburner.com/crhoy/wSjk?format=xml";
 
@@ -19,22 +20,30 @@ if(!empty($feeds))
  //Link del sitio 
  $sitelink = $feeds->channel->link;
 
- foreach ($feeds->channel->item as $item) {
+ $resultado = existsSource($site);
+ if($resultado){
+    foreach ($feeds->channel->item as $item) {
 
-  $title = $item->title;
-  $link = $item->link;
-  $description = $item->description;
-  $pubDate = $item->pubDate;
-  $categoria = $item->category;
+        $title = $item->title;
+        $link = $item->link;
+        $description = $item->description;
+        $pubDate = $item->pubDate;
+        $categoria = $item->category;
 
+        $resultCategory = existsCategories($categoria);
+        if($resultCategory){
+            echo "Titulo: ". $title.PHP_EOL;
+            echo "Link:".$link.PHP_EOL;
+            echo "Descripcion:".$description.PHP_EOL;
+            echo "Publicacion:".$pubDate.PHP_EOL;
+            echo "Categoria:".$categoria.PHP_EOL;
+            echo "".PHP_EOL;
+            echo "".PHP_EOL;
+            echo "".PHP_EOL;
+        }
+    }
 
-  echo "Titulo: ". $title.PHP_EOL;
-  echo "Link:".$link.PHP_EOL;
-  echo "Descripcion:".$description.PHP_EOL;
-  echo "Publicacion:".$pubDate.PHP_EOL;
-  echo "Categoria:".$categoria.PHP_EOL;
-  echo "".PHP_EOL;
-  echo "".PHP_EOL;
-  echo "".PHP_EOL;
  }
+
+ 
 }
