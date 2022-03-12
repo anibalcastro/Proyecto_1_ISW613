@@ -80,7 +80,6 @@ function getNewByCategories($categories, $id)
 function createSource($url, $name, $cateogoryId){
     //url/name/category_id/user_id 
     $idUser = getIdUsuario();
-    
 }
 
 /**

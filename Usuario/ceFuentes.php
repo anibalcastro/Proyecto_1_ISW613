@@ -1,3 +1,21 @@
+<?php
+  session_start();
+  $user = $_SESSION['user'];
+
+  if(!$user or $user['role_id']!= 2 ){
+    header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
+  }
+
+  $nombreUsuario = $user['first_name'];
+  $idUsuario = $user['id'];
+
+  include('funcionesUsuario.php');
+
+  $categorias = getCategories();
+  setIdUsuario($idUsuario);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +38,7 @@
                 id="logo_empresa" alt="icon" srcset="logo icon">
         </a>
         <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-dark" disabled="disabled">Administrador</button>
+            <button type="button" class="btn btn-dark" disabled="disabled"><?php echo $nombreUsuario; ?></button>
             <button type="button" class="btn btn-dark">Categories</button>
             <button type="button" class="btn btn-dark">Log out</button>
         </div>

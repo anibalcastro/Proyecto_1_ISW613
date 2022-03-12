@@ -14,8 +14,9 @@ if(@simplexml_load_file($url)){
 $i=0;
 if(!empty($feeds))
 {
-
+ //Nombre del sitio
  $site = $feeds->channel->title;
+ //Link del sitio 
  $sitelink = $feeds->channel->link;
 
  foreach ($feeds->channel->item as $item) {

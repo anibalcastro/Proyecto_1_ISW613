@@ -6,7 +6,7 @@
     header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
   }
 
-  $nombreUsuario = $user['first_name']. " ". $user['last_name'];
+  $nombreUsuario = $user['first_name'];
   $idUsuario = $user['id'];
 
   include('funcionesUsuario.php');
