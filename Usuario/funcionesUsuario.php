@@ -86,6 +86,12 @@ function createSource($url, $name, $cateogoryId){
  * Get id of the source
  */
 function getIdSourceNews($source){
+    $connection = conexion();
+    $idUser = getIdUsuario();
+    $sql = "SELECT `id` FROM `news_source` WHERE name = \'$source\' and user_id = $idUser;";
+
+    echo $sql;
+    die;
 
 }
 
