@@ -12,7 +12,7 @@
   include('funcionesUsuario.php');
 
   $categorias = getCategories();
-  setIdUsuario($idUsuario);
+
 
 ?>
 

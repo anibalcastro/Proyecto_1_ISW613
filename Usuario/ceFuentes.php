@@ -10,9 +10,7 @@
   $idUsuario = $user['id'];
 
   include('funcionesUsuario.php');
-
   $categorias = getCategories();
-  setIdUsuario($idUsuario);
 
 ?>
 
@@ -55,12 +53,15 @@
 
     <!-- Cuerpo -->
     <div>
-        <form action="" method="post">
+        <form action="xml.php" method="post">
+          <input type="hidden" name="idUser" value="<?php echo $idUsuario ?>">
             <input name="nameSource" type="text" class="form-control" placeholder="Name">
             <input id="url" name="url" type="text" class="form-control" placeholder="RSS URL">
             <select name="optCategory" id="category">
                 <option disabled selected>Category</option>
-                <option value="Deportes">Deportes</option>
+                <?php foreach($categorias as $iterador){
+                  echo "<option value= $iterador[1]>$iterador[1]</option>";
+                }?>
             </select>
             <div class="linea_100"></div>
             <input id="btnSave" type="submit" name="btnSave" value="Save" class="btn btn-dark">

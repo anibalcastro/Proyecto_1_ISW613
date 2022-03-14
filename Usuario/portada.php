@@ -12,7 +12,6 @@
   include('funcionesUsuario.php');
 
   $categorias = getCategories();
-  setIdUsuario($idUsuario);
 
 ?>
 
@@ -53,6 +52,7 @@
     <h1 class="display-4">Your unique News Cover</h1>
     <div class="linea_100"></div>
     <div id="grupoBtn" class="btn-group flex-wrap" role="group" aria-label="Button group with nested dropdown">
+    <a type="button" type="button" class="btn btn-secondary">Portada</a>
     <?php 
     foreach($categorias as $categoria)
     {

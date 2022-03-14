@@ -1,9 +1,4 @@
 <?php
-
-/***
- * Contains id user
- */
-$idUser = 0;
 $idSource = 0;
 $idCategory = 0;
 
@@ -51,19 +46,20 @@ function getCategories()
 }
 
 /**
- * Set cateogories
- */
-function setCategories($id)
-{
-    $idCategory = this->$id;
-}
-
-/**
  * Get id by specific categories.
  */
-function getIdCategories()
+function getIdCategories($nameCategory)
 {
-    return this->$idCategory;
+    $connection = conexion();
+
+    $sql = "SELECT `id` FROM `categories` WHERE `name` = '$nameCategory';";
+
+    $result = mysqli_query($connection, $sql);
+    mysqli_close($connection);
+
+    $identificador = $result->fetch_array(MYSQLI_NUM);
+    
+    return $identificador[0];
 }
 
 /**
@@ -74,14 +70,6 @@ function getNewByCategories($categories, $id)
 }
 
 /********************************************************************* */
-///USER
-/**
- * Set Id User 
- */
-function setIdUsuario($usuario)
-{
-    $idUser = this->$usuario;
-}
 
 /**
  * Get Id user 
@@ -89,7 +77,7 @@ function setIdUsuario($usuario)
  */
 function getIdUsuario()
 {
-    return this->$idUser;
+    return $idUser;
 }
 
 /**
@@ -127,33 +115,29 @@ function existsSource($source){
     }
 }
 
-/**
- * set id of the source
- */
-function setIdSourceNews($source){
-    $idSource = this->$idSource;
-}
 
 /**
  * Get id of the source
  */
-function getIdSoruceNews(){
-    return this->$idSoruce;
+function getIdSoruceNews($source, $categoria, $idUser){
+    return $idSoruce;
 }
 
-function createSource($url, $name, $cateogoryId){
+function createSource($url, $name, $cateogoryId, $idUser){
     //url/name/category_id/user_id 
-    $idUserF = getIdUsuario();
+    $connection = conexion();
+    $sqlCreate = "INSERT INTO `news_source`(`url`, `name`, `category_id`, `user_id`) VALUES ('$url','$name',$cateogoryId, $idUser);";
+    
+    //mysqli_query($connection, $sqlCreate);
 }
 
-function createNews($title, $shortDescription, $linkNew, $date, $source, $category){
+
+function createNews($title, $shortDescription, $linkNew, $date, $source, $category, $idUser){
     //title / short_description / perman_link / fecha / news_source_id / user_id / category_id 
 
-    $idSource = getIdSourceNews($source);
-    $idCategory = getIdCategories($category);
-    $idUserF = getIdUsuario();
+    //$idSource = getIdSourceNews($source);
 
-    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$title','$shortDescription','$linkNew','$date',$idSource,$idUser,$idCategory);";
+    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$title','$shortDescription','$linkNew','$date',$idSource,$idUser,$category);";
 
     echo $sqlInsert;
     die;
