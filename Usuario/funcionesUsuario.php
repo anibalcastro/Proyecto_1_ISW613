@@ -120,27 +120,35 @@ function existsSource($source){
  * Get id of the source
  */
 function getIdSoruceNews($source, $categoria, $idUser){
-    return $idSoruce;
+    $connection = conexion();
+    $sql = "SELECT `id` FROM `news_source` WHERE `name` = '$source' and `category_id` = $categoria and `user_id` = $idUser;";
+
+    $result = mysqli_query($connection, $sql);
+    mysqli_close($connection);
+
+    $identificador = $result->fetch_array(MYSQLI_NUM);
+ 
+    return $identificador[0];
 }
 
 function createSource($url, $name, $cateogoryId, $idUser){
     //url/name/category_id/user_id 
     $connection = conexion();
     $sqlCreate = "INSERT INTO `news_source`(`url`, `name`, `category_id`, `user_id`) VALUES ('$url','$name',$cateogoryId, $idUser);";
-    
-    //mysqli_query($connection, $sqlCreate);
+    mysqli_query($connection, $sqlCreate);
 }
 
 
 function createNews($title, $shortDescription, $linkNew, $date, $source, $category, $idUser){
     //title / short_description / perman_link / fecha / news_source_id / user_id / category_id 
+    $connection = conexion();
 
-    //$idSource = getIdSourceNews($source);
+    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$title','$shortDescription','$linkNew','$date',$source,$idUser,$category);";
 
-    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$title','$shortDescription','$linkNew','$date',$idSource,$idUser,$category);";
+    $result =  mysqli_query($connection, $sqlInsert);
+    
 
-    echo $sqlInsert;
-    die;
+    return $result;
 }
 
 

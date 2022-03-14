@@ -31,7 +31,8 @@ if(!empty($feeds))
  $sitelink = $feeds->channel->link;
  $idCategoria = getIdCategories($categoria);
  createSource($sitelink,$nameSource,$idCategoria, $idUser);
- $idSource = getIdSourceNews($source, $categoria, $idUser);
+ $idSource = getIdSoruceNews($nameSource, $idCategoria, $idUser);
+ $iterador = 0;
 
 
     foreach ($feeds->channel->item as $item) {
@@ -44,16 +45,11 @@ if(!empty($feeds))
 
         if ($categoria == $xmlCategoria){
 
-            createNews($xmlTitle, $xmlDescription, $xmlLink, $xmlPubDate, $site, $idCategoria, $idUser);
-            echo "Titulo: ". $xmlTitle ."<br>";
-            echo "Link:".$xmlLink."<br>";
-            echo "Descripcion:".$xmlDescription."<br>";
-            echo "Publicacion:".$xmlPubDate."<br>";
-            echo "Categoria:".$xmlCategoria."<br>";
-            echo "<br>";
-           
-
-
+            $result = createNews($xmlTitle, $xmlDescription, $xmlLink, $xmlPubDate, $idSource, $idCategoria, $idUser);
+            $filas = mysqli_affected_rows($result);
+            if ($filas > 0){
+                $iterador+=1;
+            }
             /*
             echo "Titulo: ". $xmlTitle.PHP_EOL;
             echo "Link:".$xmlLink.PHP_EOL;
@@ -65,5 +61,12 @@ if(!empty($feeds))
             echo "".PHP_EOL;
             */
         }
+    }
+
+    if ($iterador > 0){
+        header ('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php');
+    }
+    else {
+        header ('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php');
     }
 }    
