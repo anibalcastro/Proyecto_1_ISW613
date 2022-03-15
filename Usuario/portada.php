@@ -21,8 +21,7 @@ include('funcionesUsuario.php');
       $resultado = getAllNewByIdUser($idUsuario);
     }
     else {
-      $idCategoria = $_REQUEST('status');
-      $resultado = getNewByCategories($idCategory, $idUsuario);
+      $resultado = getNewByCategories($idCategoria, $idUsuario);
     }
   }
   
@@ -72,7 +71,7 @@ include('funcionesUsuario.php');
     {
     ?>
       
-      <a type="button" class="btn btn-secondary" href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php??status=success&message=$categoria[0]"; ?>" value="<?php echo $categoria[0]?>"><?php echo "$categoria[1]"?></a>
+      <a type="button" class="btn btn-secondary" href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php?status=success&message=$categoria[0]"; ?>" value="<?php echo $categoria[0]?>"><?php echo "$categoria[1]"?></a>
     <?php
     }
     ?>    
@@ -87,27 +86,33 @@ include('funcionesUsuario.php');
     </div> 
 </div>
 
-<div class="contNoticias">
-  <a href="#">
-    <H6>15/03/2022 09:20</H6>
-    <h1 class="tituloNoticia">LA NOTICIA MAS ABSURDA DEL MUNDO</h1>
-    <p class="descripcionNoticia">[(CRHoy.com) Una imagen dice más que mil palabras y las reacciones de Antonela Roccuzzo por los abucheos a Lionel Messi se han vuelto virales en las redes sociales. La esposa del crack argentino teniendo que aguantar los señalamientos al futbolista argentino por la eliminación en la Champions League frente al Real Madrid fueron evidentes. </p>
-    <a href="">Ver mas</a>
-    <H6>Nacionales / CRHoy</H6>
-  </a>
-</div>
+<?php 
+if($resultado){
+  foreach($resultado as $noticias){
+    /*
+    echo $noticias[0];//TITULO
+    echo $noticias[1];//DESCRIPCION
+    echo $noticias[2];//LINK
+    echo $noticias[3];//FECHA
+    echo $noticias[4];//FUENTE
+    echo $noticias[5];//CATEGORIA
+    die;*/
+
+?>
 
 <div class="contNoticias">
-  <a href="#">
-    <H6>15/03/2022 09:20</H6>
-    <h1 class="tituloNoticia">LA NOTICIA MAS ABSURDA DEL MUNDO</h1>
-    <p class="descripcionNoticia">[(CRHoy.com) Una imagen dice más que mil palabras y las reacciones de Antonela Roccuzzo por los abucheos a Lionel Messi se han vuelto virales en las redes sociales. La esposa del crack argentino teniendo que aguantar los señalamientos al futbolista argentino por la eliminación en la Champions League frente al Real Madrid fueron evidentes. </p>
-    <a href="">Ver mas</a>
-    <H6>Nacionales / CRHoy</H6>
+  <a target="_blanc"  href=<?php echo "$noticias[2]"?> >
+    <H6><?php echo $noticias[3];?></H6>
+    <h1 class="tituloNoticia"><?php echo $noticias[0] ?></h1>
+    <p class="descripcionNoticia"><?php echo $noticias[1]; ?></p>
+    <a target="_blanc"  href=<?php echo "$noticias[2]"?>>Ver mas</a>
+    <H6><?php echo $noticias[4]. " / ".$noticias[5]?></H6>
   </a>
 </div>
-
-
+<?php  
+  }
+}  
+  ?>
 
   <!-- Footer -->
   <footer class="text-center text-white" style="background-color: #0a4275;">

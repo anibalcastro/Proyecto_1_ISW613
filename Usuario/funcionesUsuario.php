@@ -86,9 +86,7 @@ function getNewByCategories($idCategory, $id)
     $result = mysqli_query($connection, $sql);
     mysqli_close($connection);
 
-    echo $sql;
-    var_dump($result);
-
+    return $result->fetch_all();
 }
 
 /**
@@ -102,6 +100,8 @@ function getAllNewByIdUser($id)
 
     $result = mysqli_query($connection, $sql);
     mysqli_close($connection);
+
+    return $result->fetch_all();
 }
 
 /********************************************************************* */
