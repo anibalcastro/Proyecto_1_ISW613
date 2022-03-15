@@ -6,12 +6,15 @@ include ('funcionesUsuario.php');
 
 if (isset($_POST['btnSave']))
 {
-    if ($_POST['url'] != '')
+    if (!empty($_POST['url']) && !empty($_POST['nameSource']) && !empty($_POST['optCategory']))
     {
         $idUser = $_POST['idUser'];
         $url = $_POST['url'];
         $nameSource = $_POST['nameSource'];
         $categoria = $_POST['optCategory'];
+    }
+    else {
+        header ('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=Error-Fill-the-blanks');
     }
 }
 
@@ -36,6 +39,7 @@ if (!empty($feeds))
     $sitelink = $feeds
         ->channel->link;
     $idCategoria = getIdCategories($categoria);
+
     createSource($sitelink, $nameSource, $idCategoria, $idUser);
     $idSource = getIdSoruceNews($nameSource, $idCategoria, $idUser);
     $iterador = 0;

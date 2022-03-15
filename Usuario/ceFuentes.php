@@ -6,7 +6,21 @@
     header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
   }
 
+  //valida si tiene espacios en blanco, haga una alerta.
+  if(!empty($_REQUEST['status'])) {
+    //captura el error
+    $error = $_REQUEST['message'];
+
+    //lo compara
+    if($error == "Error-Fill-the-blanks"){
+      //muestra alerta
+      echo '<script language="javascript">alert("Por favor llenar los campos");</script>';
+    }
+  }
+
+  //nombre del usuario
   $nombreUsuario = $user['first_name'];
+  //Id del usuario
   $idUsuario = $user['id'];
 
   include('funcionesUsuario.php');

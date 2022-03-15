@@ -62,12 +62,6 @@ function getIdCategories($nameCategory)
     return $identificador[0];
 }
 
-/**
- * Get news by Categories
- */
-function getNewByCategories($categories, $id)
-{
-}
 
 /********************************************************************* */
 
@@ -81,10 +75,26 @@ function getIdUsuario()
 }
 
 /**
+ * Get news by Categories
+ */
+function getNewByCategories($categories, $id)
+{
+    
+}
+
+/**
  * Get all news by Id User
  */
 function getAllNewByIdUser($id)
 {
+    $connection = conexion();
+
+    $sql = "SELECT title, short_description, perman_link, fecha, news_source.name, categories.name FROM `news` INNER JOIN news_source ON news.news_source_id = news_source.id INNER JOIN categories ON news.category_id = categories.id AND news.user_id = $id ORDER BY fecha DESC;";
+
+    echo $sql;
+
+    $result = mysqli_query($connection, $sql);
+    var_dump($result);
 }
 
 /********************************************************************* */
