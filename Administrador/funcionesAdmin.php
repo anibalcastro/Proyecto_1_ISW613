@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Realiza conexión a la base de datos
  */
@@ -49,7 +50,8 @@ function editarCategoria($id, $name)
  * Agrega categorias
  */
 function agregarCategoria($name)
-{   $agrega = "no";
+{   
+    $agrega = "no";
     $valido = validarExistenciaCategoria($name);
     echo $valido;
 
