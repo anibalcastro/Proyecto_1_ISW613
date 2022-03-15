@@ -1,6 +1,10 @@
 <?php
+include('funcionesUsuario.php');
+include('mostrarNoticias');
   session_start();
   $user = $_SESSION['user'];
+
+  setIdUser($user);
 
   if(!$user or $user['role_id']!= 2 ){
     header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
@@ -9,7 +13,6 @@
   $nombreUsuario = $user['first_name'];
   $idUsuario = $user['id'];
 
-  include('funcionesUsuario.php');
 
   $categorias = getCategories();
 
