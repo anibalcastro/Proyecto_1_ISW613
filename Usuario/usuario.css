@@ -98,3 +98,24 @@ table th, tr{
     margin-left: 20px;
     margin-top: 10px;
 }
+
+.contNoticias{
+    height: AUTO;
+    width: 80%;
+    display: FLEX;
+    flex-direction: COLUMN;
+    align-items: CENTER;
+    place-content: FLEX-START;
+    margin-left: AUTO;
+    margin-right: AUTO;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); 
+}
+
+.tituloNoticia{
+    color: black;
+}
+
+.descripcionNoticia{
+    color: black;
+}

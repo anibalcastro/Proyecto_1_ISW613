@@ -16,13 +16,13 @@ include('funcionesUsuario.php');
   if(!empty($_REQUEST['status'])) {
     //captura el idCategoria
     $idCategoria = $_REQUEST['message'];
-    
+
     if ($idCategoria== "inicio"){
-      $resultado = getAllNewByIdUser($id);
+      $resultado = getAllNewByIdUser($idUsuario);
     }
     else {
       $idCategoria = $_REQUEST('status');
-      $resultado = getNewByCategories($idCategory, $idUser);
+      $resultado = getNewByCategories($idCategory, $idUsuario);
     }
   }
   
@@ -85,6 +85,26 @@ include('funcionesUsuario.php');
         <button type="button" class="btn btn-secondary">Espectaculos</button>
       !-->
     </div> 
+</div>
+
+<div class="contNoticias">
+  <a href="#">
+    <H6>15/03/2022 09:20</H6>
+    <h1 class="tituloNoticia">LA NOTICIA MAS ABSURDA DEL MUNDO</h1>
+    <p class="descripcionNoticia">[(CRHoy.com) Una imagen dice más que mil palabras y las reacciones de Antonela Roccuzzo por los abucheos a Lionel Messi se han vuelto virales en las redes sociales. La esposa del crack argentino teniendo que aguantar los señalamientos al futbolista argentino por la eliminación en la Champions League frente al Real Madrid fueron evidentes. </p>
+    <a href="">Ver mas</a>
+    <H6>Nacionales / CRHoy</H6>
+  </a>
+</div>
+
+<div class="contNoticias">
+  <a href="#">
+    <H6>15/03/2022 09:20</H6>
+    <h1 class="tituloNoticia">LA NOTICIA MAS ABSURDA DEL MUNDO</h1>
+    <p class="descripcionNoticia">[(CRHoy.com) Una imagen dice más que mil palabras y las reacciones de Antonela Roccuzzo por los abucheos a Lionel Messi se han vuelto virales en las redes sociales. La esposa del crack argentino teniendo que aguantar los señalamientos al futbolista argentino por la eliminación en la Champions League frente al Real Madrid fueron evidentes. </p>
+    <a href="">Ver mas</a>
+    <H6>Nacionales / CRHoy</H6>
+  </a>
 </div>
 
 
