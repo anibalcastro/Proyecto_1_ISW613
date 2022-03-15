@@ -12,14 +12,20 @@ include('funcionesUsuario.php');
   $categorias = getCategories();
   $resultado = '';
 
-  if (!empty($_POST('status')))
-  {
-    $idCategoria = $_POST('status');
-    $resultado = getNewByCategories($idCategory, $idUser);
+  //valida si tiene espacios en blanco, haga una alerta.
+  if(!empty($_REQUEST['status'])) {
+    //captura el idCategoria
+    $idCategoria = $_REQUEST['message'];
+    
+    if ($idCategoria== "inicio"){
+      $resultado = getAllNewByIdUser($id);
+    }
+    else {
+      $idCategoria = $_REQUEST('status');
+      $resultado = getNewByCategories($idCategory, $idUser);
+    }
   }
-  else {
-    $resultado = getAllNewByIdUser($user);
-  }
+  
 
 ?>
 
@@ -29,7 +35,7 @@ include('funcionesUsuario.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>News</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -60,12 +66,13 @@ include('funcionesUsuario.php');
     <h1 class="display-4">Your unique News Cover</h1>
     <div class="linea_100"></div>
     <div id="grupoBtn" class="btn-group flex-wrap" role="group" aria-label="Button group with nested dropdown">
-    <a type="button" type="button" class="btn btn-secondary">Portada</a>
+    <a href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php?status=success&message=inicio";?>" type="button" type="button" class="btn btn-secondary">Portada</a>
     <?php 
     foreach($categorias as $categoria)
     {
     ?>
-      <a type="button" class="btn btn-secondary" href="#." value="<?php echo $categoria[0]?>"><?php echo "$categoria[1]"?></a>
+      
+      <a type="button" class="btn btn-secondary" href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php??status=success&message=$categoria[0]"; ?>" value="<?php echo $categoria[0]?>"><?php echo "$categoria[1]"?></a>
     <?php
     }
     ?>    

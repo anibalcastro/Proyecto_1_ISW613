@@ -18,7 +18,7 @@
             }
             else{
                 //redirecciona a usuario
-                header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php?status=success&message=Bienvenido');
+                header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php?status=success&message=inicio');
             }
         }
         else{
