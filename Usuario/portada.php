@@ -1,10 +1,7 @@
 <?php
 include('funcionesUsuario.php');
-include('mostrarNoticias');
   session_start();
   $user = $_SESSION['user'];
-
-  setIdUser($user);
 
   if(!$user or $user['role_id']!= 2 ){
     header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
@@ -12,9 +9,17 @@ include('mostrarNoticias');
 
   $nombreUsuario = $user['first_name'];
   $idUsuario = $user['id'];
-
-
   $categorias = getCategories();
+  $resultado = '';
+
+  if (!empty($_POST('status')))
+  {
+    $idCategoria = $_POST('status');
+    $resultado = getNewByCategories($idCategory, $idUser);
+  }
+  else {
+    $resultado = getAllNewByIdUser($user);
+  }
 
 ?>
 
