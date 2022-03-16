@@ -41,7 +41,7 @@
       </a>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-dark" disabled="disabled"><?php echo $nombreUsuario; ?></button>
-        <button type="button" class="btn btn-dark" disabled="disabled">News Source</button>
+        <a href="http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php" type="button" class="btn btn-dark" disabled="disabled">News Source</a>
         <form action="logout.php" method="post">
           <button type="submit" class="btn btn-dark">Log out</button>
         </form>
