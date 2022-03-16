@@ -164,9 +164,6 @@ function deleteSource($idSource){
     $sqlDeleteNews = "DELETE FROM `news` WHERE `news_source_id` = $idSource;";
     $sqlDeleteSource = "DELETE FROM `news_source` WHERE `id` = $idSource;";
 
-    echo $sqlDeleteNews;
-    echo $sqlDeleteSource;
-    die;
 
     mysqli_query($connection, $sqlDeleteNews);
     mysqli_query($connection, $sqlDeleteSource);

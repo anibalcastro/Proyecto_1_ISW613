@@ -73,7 +73,7 @@
           echo $fuente[2]; Categoria
           */
           $urlEditar = "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=". $fuente[0];
-          $urlEliminar = "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=". $fuente[0];
+          $urlEliminar = "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/deleteSource.php?status=success&message=". $fuente[0];
         ?>
        <tr>
         <td><?php echo $fuente[1]; ?></td>
@@ -103,7 +103,7 @@
   </table>
 
   <div class="btnAdd">
-  <button type="button" class="btn btn-dark">Add New</button>
+  <a href="http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php" type="button" class="btn btn-dark">Add New</a>
   </div>
   
 
