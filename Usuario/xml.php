@@ -40,52 +40,57 @@ if (!empty($feeds))
         ->channel->link;
     $idCategoria = getIdCategories($categoria);
 
-    createSource($sitelink, $nameSource, $idCategoria, $idUser);
-    $idSource = getIdSoruceNews($nameSource, $idCategoria, $idUser);
-    $iterador = 0;
+    $resultadoExiste = existsSource($nameSource, $idCategoria, $idUser);
 
-    foreach ($feeds
-        ->channel->item as $item)
-    {
-
-        $xmlTitle = $item->title;
-        $xmlLink = $item->link;
-        $xmlDescription = $item->description;
-        $xmlPubDate = $item->pubDate;
-        $xmlCategoria = $item->category;
-
-        if ($categoria == $xmlCategoria)
+    if (!$resultadoExiste){
+        createSource($sitelink, $nameSource, $idCategoria, $idUser);
+        $idSource = getIdSoruceNews($nameSource, $idCategoria, $idUser);
+        $iterador = 0;
+    
+        foreach ($feeds->channel->item as $item)
         {
-
-            $date = date_create("$xmlPubDate");
-            $dateTime = date_format($date, "Y/m/d H:i:s");
-
-            $result = createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, $idCategoria, $idUser);
-            if ($result)
+            $xmlTitle = $item->title;
+            $xmlLink = $item->link;
+            $xmlDescription = $item->description;
+            $xmlPubDate = $item->pubDate;
+            $xmlCategoria = $item->category;
+    
+            if ($categoria == $xmlCategoria)
             {
-                $iterador += 1;
+                $date = date_create("$xmlPubDate");
+                $dateTime = date_format($date, "Y/m/d H:i:s");
+    
+                $result = createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, $idCategoria, $idUser);
+                if ($result)
+                {
+                    $iterador += 1;
+                }
+                /*
+                echo "Titulo: ". $xmlTitle.PHP_EOL;
+                echo "Link:".$xmlLink.PHP_EOL;
+                echo "Descripcion:".$xmlDescription.PHP_EOL;
+                echo "Publicacion:".$xmlPubDate.PHP_EOL;
+                echo "Categoria:".$xmlCategoria.PHP_EOL;
+                echo "".PHP_EOL;
+                echo "".PHP_EOL;
+                echo "".PHP_EOL;
+                */
             }
-
-            /*
-            echo "Titulo: ". $xmlTitle.PHP_EOL;
-            echo "Link:".$xmlLink.PHP_EOL;
-            echo "Descripcion:".$xmlDescription.PHP_EOL;
-            echo "Publicacion:".$xmlPubDate.PHP_EOL;
-            echo "Categoria:".$xmlCategoria.PHP_EOL;
-            echo "".PHP_EOL;
-            echo "".PHP_EOL;
-            echo "".PHP_EOL;
-            */
+        }
+    
+        if ($iterador > 0)
+        {
+            header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php');
+        }
+        else
+        {
+            header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=no_hay');
         }
     }
+    else {
+        header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=existe');
+    }
 
-    if ($iterador > 0)
-    {
-        header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php');
-    }
-    else
-    {
-        header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php');
-    }
+   
 }
 

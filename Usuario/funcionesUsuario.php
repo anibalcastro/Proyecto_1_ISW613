@@ -10,23 +10,6 @@ function conexion(){
 }
 
 ///CATEGORIES
-/**
- * Validate exists categories 
- */
-function existsCategories($nombre)
-{
-    $categorias = getCategories();
-    $id = 0;
-    
-    foreach($categorias as $cat){  
-        if ($cat[1] == $nombre){
-            $id = $cat[0];
-            return true;
-            break;
-        }
-    }
-    return $id;
-}
 
 /**
  * Get all categories 
@@ -64,15 +47,8 @@ function getIdCategories($nameCategory)
 
 
 /********************************************************************* */
+//NEWS
 
-/**
- * Get Id user 
- * Return $id
- */
-function getIdUsuario()
-{
-    return $idUser;
-}
 
 /**
  * Get news by Categories
@@ -104,37 +80,44 @@ function getAllNewByIdUser($id)
     return $result->fetch_all();
 }
 
-/********************************************************************* */
-///SOURCE AND NEWS
-
-/**
- * Validate exists source in database.
- */
-function existsSource($source){
-    $idUserF = getIdUsuario();
+function createNews($title, $shortDescription, $linkNew, $date, $source, $category, $idUser){
+    //title / short_description / perman_link / fecha / news_source_id / user_id / category_id 
     $connection = conexion();
+
+    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$title','$shortDescription','$linkNew','$date',$source,$idUser,$category);";
+
+    $result =  mysqli_query($connection, $sqlInsert);
     
-    $sql = "SELECT * FROM `news_source` WHERE name = '$source' AND user_id = $idUserF";
-    echo $sql;
 
-    $result = mysqli_query($connection, $sql);
-    mysqli_close($connection);
-
-    $result -> fetch_all();
-
-    if (mysqli_num_rows($result) > 0){
-        return true;
-        $id = $result[0];
-        setIdSourceNews($id);
-        var_dump($result);
-        die;
-
-    }
+    return $result;
 }
 
 
+/********************************************************************* */
+///SOURCE 
+
 /**
- * Get id of the source
+ * Valida si existe la fuente.
+ */
+function existsSource($source, $categoria, $idUser){
+    $connection = conexion();
+    $boolean = false;
+    $sql = "SELECT `id` FROM `news_source` WHERE `name` = '$source' and `category_id` = $categoria and `user_id` = $idUser;";
+
+    $result = mysqli_query($connection, $sql);
+    mysqli_close($connection);
+    $id = $result->fetch_array(MYSQLI_NUM);
+
+    if(!empty($id[0])){
+        $boolean = true;
+    }
+
+    return $boolean;
+}
+
+/**
+ * Obtiene el identificador
+ * de las fuentes.
  */
 function getIdSoruceNews($source, $categoria, $idUser){
     $connection = conexion();
@@ -148,25 +131,46 @@ function getIdSoruceNews($source, $categoria, $idUser){
     return $identificador[0];
 }
 
+/**
+ * Agrega a la base de datos fuentes
+ */
 function createSource($url, $name, $cateogoryId, $idUser){
     //url/name/category_id/user_id 
     $connection = conexion();
-    $sqlCreate = "INSERT INTO `news_source`(`url`, `name`, `category_id`, `user_id`) VALUES ('$url','$name',$cateogoryId, $idUser);";
-    mysqli_query($connection, $sqlCreate);
+
+    $sqlCreateSource = "INSERT INTO `news_source`(`url`, `name`, `category_id`, `user_id`) VALUES ('$url','$name',$cateogoryId, $idUser);";
+
+    mysqli_query($connection, $sqlCreateSource);
 }
 
-
-function createNews($title, $shortDescription, $linkNew, $date, $source, $category, $idUser){
-    //title / short_description / perman_link / fecha / news_source_id / user_id / category_id 
+function editSource($idSource, $nameSource){
     $connection = conexion();
 
-    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$title','$shortDescription','$linkNew','$date',$source,$idUser,$category);";
+    $sqlEditSource = "UPDATE `news_source` SET `name` = '$nameSource' WHERE `id` = $idSource;";
 
-    $result =  mysqli_query($connection, $sqlInsert);
-    
-
-    return $result;
+    echo $sqlEditSource;
+    die;
+    mysqli_query($connection, $sqlEditSource);
 }
 
+/**
+ * Elimina fuentes y las noticias
+ * relacionadas al mismo.
+ */
+function deleteSource($idSource){
+    $connection = conexion();
+
+    //Elimina las noticias
+    $sqlDeleteNews = "DELETE FROM `news` WHERE `news_source_id` = $idSource;";
+    $sqlDeleteSource = "DELETE FROM `news_source` WHERE `id` = $idSource;";
+
+    echo $sqlDeleteNews;
+    echo $sqlDeleteSource;
+    die;
+
+    mysqli_query($connection, $sqlDeleteNews);
+    mysqli_query($connection, $sqlDeleteSource);
+
+}
 
 ?>
