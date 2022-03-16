@@ -12,6 +12,7 @@
   include('funcionesUsuario.php');
 
   $categorias = getCategories();
+  $fuentes = getSource($idUsuario);
 
 
 ?>
@@ -64,6 +65,29 @@
       </tr>
     </thead>
     <tbody>
+      <?php 
+        foreach($fuentes as $fuente){
+          /*
+          echo $fuente[0]; Id
+          echo $fuente[1]; Nombre
+          echo $fuente[2]; Categoria
+          */
+          $urlEditar = "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=". $fuente[0];
+          $urlEliminar = "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=". $fuente[0];
+        ?>
+       <tr>
+        <td><?php echo $fuente[1]; ?></td>
+        <td><?php echo $fuente[2]; ?></td>
+        <td> 
+          <a href="<?php echo $urlEditar; ?>" id="edit" type="button" class="btn btn-default" aria-label="Left Align">Edit</a>
+           | 
+          <a href="<?php echo $urlEliminar; ?>" id="delete" type="button" class="btn btn-default" aria-label="Left Align">Delete</a>
+        </td>
+      </tr>
+      <?php
+        }
+      ?>
+      <!--
       <tr>
         <td>CRHoy</td>
         <td>Deportes</td>
@@ -74,17 +98,7 @@
           </button>
         </td>
       </tr>
-
-      <tr>
-        <td>Nación</td>
-        <td>Farandula</td>
-        <td> <button id="edit" type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-pencil-align-left" aria-hidden="true"></span>Edit
-          </button> | <button id="delete" type="button" class="btn btn-default" aria-label="Left Align">
-            <span class="glyphicon glyphicon-trash-align-left" aria-hidden="true"></span>Delete
-          </button>
-        </td>
-      </tr>
+      -->
     </tbody>
   </table>
 

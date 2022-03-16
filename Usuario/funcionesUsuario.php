@@ -171,6 +171,18 @@ function deleteSource($idSource){
     mysqli_query($connection, $sqlDeleteNews);
     mysqli_query($connection, $sqlDeleteSource);
 
+    mysqli_close($connection);
+
+}
+
+function getSource($idUser){
+    $connection = conexion();
+    $sqlGetSource = "SELECT news_source.id, news_source.name, categories.name FROM `news_source` INNER JOIN categories ON categories.id = news_source.category_id AND user_id = $idUser;";
+    $resultado = mysqli_query($connection, $sqlGetSource);
+    mysqli_close($connection);
+
+
+    return $resultado->fetch_all();
 }
 
 ?>

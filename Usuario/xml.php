@@ -33,13 +33,10 @@ $i = 0;
 if (!empty($feeds))
 {
     //Nombre del sitio
-    $site = $feeds
-        ->channel->title;
+    $site = $feeds->channel->title;
     //Link del sitio
-    $sitelink = $feeds
-        ->channel->link;
+    $sitelink = $feeds->channel->link;
     $idCategoria = getIdCategories($categoria);
-
     $resultadoExiste = existsSource($nameSource, $idCategoria, $idUser);
 
     if (!$resultadoExiste){
@@ -90,7 +87,5 @@ if (!empty($feeds))
     else {
         header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=existe');
     }
-
-   
 }
 
