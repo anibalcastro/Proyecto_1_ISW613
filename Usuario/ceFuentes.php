@@ -9,13 +9,21 @@
   //valida si tiene espacios en blanco, haga una alerta.
   if(!empty($_REQUEST['status'])) {
     //captura el error
-    $error = $_REQUEST['message'];
+    $mensaje = $_REQUEST['message'];
+    $mensajeInt = intval($mensaje);
 
-    //lo compara
-    if($error == "Error-Fill-the-blanks"){
+    if($mensaje == "Error-Fill-the-blanks"){
       //muestra alerta
       echo '<script language="javascript">alert("Por favor llenar los campos");</script>';
     }
+    else if (is_int($mensajeInt)){
+      //edita
+      $accion = 'Editar';
+    }
+  }
+  else{
+    //agrega
+    $accion = 'Agregar';
   }
 
   //nombre del usuario
@@ -67,8 +75,9 @@
 
     <!-- Cuerpo -->
     <div>
-        <form action="xml.php" method="post">
+        <form action="saveSource.php" method="post">
           <input type="hidden" name="idUser" value="<?php echo $idUsuario ?>">
+          <input type="hidden" name="action" value="<?php echo $accion ?>">
             <input name="nameSource" type="text" class="form-control" placeholder="Name">
             <input id="url" name="url" type="text" class="form-control" placeholder="RSS URL">
             <select name="optCategory" id="category">
