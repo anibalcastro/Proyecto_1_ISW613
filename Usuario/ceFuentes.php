@@ -78,6 +78,7 @@
         <form action="saveSource.php" method="post">
           <input type="hidden" name="idUser" value="<?php echo $idUsuario ?>">
           <input type="hidden" name="action" value="<?php echo $accion ?>">
+          <input type="hidden" name="idSource" value="<?php echo $mensajeInt ?>">
             <input name="nameSource" type="text" class="form-control" placeholder="Name">
             <input id="url" name="url" type="text" class="form-control" placeholder="RSS URL">
             <select name="optCategory" id="category">

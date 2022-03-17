@@ -11,6 +11,7 @@ if (isset($_POST['btnSave']))
         $nameSource = $_POST['nameSource'];
         $categoria = $_POST['optCategory'];
         $action = $_POST['action'];
+        $idSource = $_POST['idSource'];
 
         if ($action == 'Agregar'){
             $idCategoria = getIdCategories($categoria);
@@ -26,6 +27,8 @@ if (isset($_POST['btnSave']))
         }
         else 
         {
+            editSource($idSource, $nameSource);
+            header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/fuentes.php');
 
         }
     }
