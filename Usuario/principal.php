@@ -43,14 +43,14 @@ include('funcionesUsuario.php');
 <body>
 <header id="encabezado">
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/principal.php?status=success&message=inicio">
         <div class="header">
           <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Telefe_Noticias_logo_2_%282018%29.png"
             id="logo_empresa" alt="icon" srcset="logo icon">
       </a>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-dark" disabled="disabled"><?php echo $nombreUsuario ?></button>
-        <a type="button" href="http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/fuentes.php" class="btn btn-dark">News Source</a>
+        <a type="button" href="http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/sources.php" class="btn btn-dark">News Source</a>
         <form action="logout.php" method="post">
           <button type="submit" class="btn btn-dark">Log out</button>
         </form>
@@ -65,7 +65,7 @@ include('funcionesUsuario.php');
     <h1 class="display-4">Your unique News Cover</h1>
     <div class="linea_100"></div>
     <div id="grupoBtn" class="btn-group flex-wrap" role="group" aria-label="Button group with nested dropdown">
-    <a href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php?status=success&message=inicio";?>" type="button" type="button" class="btn btn-secondary">Portada</a>
+    <a href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/principal.php?status=success&message=inicio";?>" type="button" type="button" class="btn btn-secondary">Portada</a>
     <?php 
     foreach($categorias as $categoria)
     {

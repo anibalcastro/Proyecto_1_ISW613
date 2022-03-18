@@ -8,6 +8,6 @@ if (!empty($_REQUEST['status']))
     //edita categoria
     editSource($idSource);
     //Redirecciona
-    header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/fuentes.php?status=success&message=Category-was-modified');
+    header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/sources.php?status=success&message=Category-was-modified');
 
 }

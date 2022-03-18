@@ -1,4 +1,5 @@
 <?php
+//******************************************* */
   session_start();
   $user = $_SESSION['user'];
 
@@ -17,8 +18,8 @@
 
 //******************************************* */
   
-    include('funcionesUsuario.php');
-    $categorias = getCategories();
+  include('funcionesUsuario.php');
+  $categorias = getCategories();
 
   //valida si tiene espacios en blanco, haga una alerta.
   if(!empty($_REQUEST['status'])) {
@@ -37,7 +38,7 @@
 
       $nameSource = $infoSource[2];
       $urlSource = $infoSource[1];
-      $idCatSource = $$infoSource[3];
+      $idCatSource = $infoSource[3];
     }
   }
   else{

@@ -21,10 +21,10 @@ if (isset($_POST['btnSave']))
 
             if (!$resultadoExiste){
                 createSource($url, $nameSource, $idCategoria, $idUser);
-                header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/portada.php');
+                header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/principal.php?status=success&message=inicio";');
             }
             else {
-                header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=existe');
+                header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceSource.php?status=success&message=existe');
             }
         }
         else 
@@ -41,11 +41,11 @@ if (isset($_POST['btnSave']))
                 //editar la fuente
                 editSource($idSource, $nameSource, $url, $idCategoria);
             }
-            header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/fuentes.php');
+            header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/sources.php');
         }
     }
     else {
-        header ('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=Error-Fill-the-blanks');
+        header ('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceSource.php?status=success&message=Error-Fill-the-blanks');
     }
 }
 

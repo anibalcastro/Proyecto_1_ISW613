@@ -1,4 +1,13 @@
 <?php
+//******************************************* */
+session_start();
+$user = $_SESSION['user'];
+
+if(!$user or $user['role_id']!= 2 ){
+  header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
+}
+//******************************************* */
+
 include ('funcionesUsuario.php');
 $separador = "/";
 
@@ -13,6 +22,6 @@ if (!empty($_REQUEST['status']))
     //Eliminar categoria
     deleteSource($idSource,$idUser);
     //Redirecciona
-    header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/fuentes.php?status=success&message=Category-was-deleted');
+    header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/sources.php?status=success&message=Category-was-deleted');
 
 }
