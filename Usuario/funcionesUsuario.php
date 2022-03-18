@@ -92,6 +92,14 @@ function createNews($title, $shortDescription, $linkNew, $date, $source, $catego
     return $result;
 }
 
+function deleteNews($idSource, $idUser){
+    //Elimina las noticias
+    $sqlDeleteNews = "DELETE FROM `news` WHERE `news_source_id` = $idSource and user_id = $idUser;";
+    $connection = conexion();
+    mysqli_query($connection, $sqlDeleteNews);
+    mysqli_close($connection);
+}
+
 
 /********************************************************************* */
 ///SOURCE 
@@ -143,10 +151,10 @@ function createSource($url, $name, $cateogoryId, $idUser){
     mysqli_query($connection, $sqlCreateSource);
 }
 
-function editSource($idSource, $nameSource){
+function editSource($idSource, $nameSource, $urlSource, $idCategory){
     $connection = conexion();
 
-    $sqlEditSource = "UPDATE `news_source` SET `name` = '$nameSource' WHERE `id` = $idSource;";
+    $sqlEditSource = "UPDATE `news_source` SET `url`='$urlSource',`name`='$nameSource',`category_id`= $idCategory WHERE id = $idSource;";
 
     echo $sqlEditSource;
     die;
@@ -157,12 +165,12 @@ function editSource($idSource, $nameSource){
  * Elimina fuentes y las noticias
  * relacionadas al mismo.
  */
-function deleteSource($idSource){
+function deleteSource($idSource, $idUser ){
     $connection = conexion();
 
     //Elimina las noticias
-    $sqlDeleteNews = "DELETE FROM `news` WHERE `news_source_id` = $idSource;";
-    $sqlDeleteSource = "DELETE FROM `news_source` WHERE `id` = $idSource;";
+    $sqlDeleteNews = "DELETE FROM `news` WHERE `news_source_id` = $idSource and user_id = $idUser;";
+    $sqlDeleteSource = "DELETE FROM `news_source` WHERE `id` = $idSource and user_id = $idUser;";
 
 
     mysqli_query($connection, $sqlDeleteNews);
@@ -180,6 +188,17 @@ function getSource($idUser){
 
 
     return $resultado->fetch_all();
+}
+
+function getInfoSource($idSource, $idUser){
+    $connection = conexion();
+    $sqlGetInfoSource = "SELECT * FROM `news_source` WHERE user_id = $idUser AND id = $idSource;";
+    $resultado = mysqli_query($connection, $sqlGetInfoSource);
+    mysqli_close($connection);
+
+
+
+    return $resultado->fetch_array();
 }
 
 ?>

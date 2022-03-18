@@ -73,7 +73,7 @@
           echo $fuente[2]; Categoria
           */
           $urlEditar = "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceFuentes.php?status=success&message=". $fuente[0];
-          $urlEliminar = "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/deleteSource.php?status=success&message=". $fuente[0];
+          $urlEliminar = "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/deleteSource.php?status=success&message=". $fuente[0]."/".$idUsuario;
         ?>
        <tr>
         <td><?php echo $fuente[1]; ?></td>

@@ -12,9 +12,11 @@ if (isset($_POST['btnSave']))
         $categoria = $_POST['optCategory'];
         $action = $_POST['action'];
         $idSource = $_POST['idSource'];
+        
+        $idCategoria = getIdCategories($categoria);
 
         if ($action == 'Agregar'){
-            $idCategoria = getIdCategories($categoria);
+           
             $resultadoExiste =  existsSource($nameSource, $idCategoria, $idUser);
 
             if (!$resultadoExiste){
@@ -27,9 +29,19 @@ if (isset($_POST['btnSave']))
         }
         else 
         {
-            editSource($idSource, $nameSource);
+            $infoSource = getInfoSource($idSource, $idUser);
+        
+            if($infoSource[1] != $url OR $infoSource[3] != $idCategoria){
+                //borrar las noticias
+                deleteNews($idSource, $idUser);
+                //editar la fuente
+                editSource($idSource, $nameSource, $url, $idCategoria);
+            }
+            else{
+                //editar la fuente
+                editSource($idSource, $nameSource, $url, $idCategoria);
+            }
             header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/fuentes.php');
-
         }
     }
     else {

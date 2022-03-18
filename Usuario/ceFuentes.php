@@ -5,34 +5,44 @@
   if(!$user or $user['role_id']!= 2 ){
     header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/index.php');
   }
+//******************************************* */
+
+  //nombre del usuario
+  $nombreUsuario = $user['first_name'];
+  //Id del usuario
+  $idUsuario = $user['id'];
+  $nameSource = "";
+  $urlSource = "";
+
+//******************************************* */
+  
+    include('funcionesUsuario.php');
+    $categorias = getCategories();
 
   //valida si tiene espacios en blanco, haga una alerta.
   if(!empty($_REQUEST['status'])) {
     //captura el error
     $mensaje = $_REQUEST['message'];
-    $mensajeInt = intval($mensaje);
+    $idSource = intval($mensaje);
 
     if($mensaje == "Error-Fill-the-blanks"){
       //muestra alerta
       echo '<script language="javascript">alert("Por favor llenar los campos");</script>';
     }
-    else if (is_int($mensajeInt)){
+    else if (is_int($idSource)){
       //edita
       $accion = 'Editar';
+      $infoSource = getInfoSource($idSource, $idUsuario);
+
+      $nameSource = $infoSource[2];
+      $urlSource = $infoSource[1];
+
     }
   }
   else{
     //agrega
     $accion = 'Agregar';
   }
-
-  //nombre del usuario
-  $nombreUsuario = $user['first_name'];
-  //Id del usuario
-  $idUsuario = $user['id'];
-
-  include('funcionesUsuario.php');
-  $categorias = getCategories();
 
 ?>
 
@@ -78,13 +88,21 @@
         <form action="saveSource.php" method="post">
           <input type="hidden" name="idUser" value="<?php echo $idUsuario ?>">
           <input type="hidden" name="action" value="<?php echo $accion ?>">
-          <input type="hidden" name="idSource" value="<?php echo $mensajeInt ?>">
-            <input name="nameSource" type="text" class="form-control" placeholder="Name">
-            <input id="url" name="url" type="text" class="form-control" placeholder="RSS URL">
+          <input type="hidden" name="idSource" value="<?php echo $idSource ?>">
+            <input name="nameSource" type="text" class="form-control" placeholder="Name" value=<?php echo "$nameSource"; ?>>
+            <input id="url" name="url" type="text" class="form-control" placeholder="RSS URL" value=<?php echo"$urlSource"; ?>>
             <select name="optCategory" id="category">
-                <option disabled selected>Category</option>
+                <!--<option disabled selected>Category</option>-->
                 <?php foreach($categorias as $iterador){
-                  echo "<option value= $iterador[1]>$iterador[1]</option>";
+                  if ($iterador[0] == $infoSource[3])
+                  {
+                    echo "<option selected value= $iterador[1]>$iterador[1]</option>";
+                  }
+                  else
+                  {
+                    echo "<option value= $iterador[1]>$iterador[1]</option>";
+                  }
+
                 }?>
             </select>
             <div class="linea_100"></div>
