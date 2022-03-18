@@ -2,13 +2,17 @@
 $idSource = 0;
 $idCategory = 0;
 
+/********************************************************************* */
+//CONEXION
+
 /**
  * Connection to database
  */
-function conexion(){
+function conexion()
+{
     return mysqli_connect('127.0.0.1','root','','mynews');
 }
-
+/********************************************************************* */
 ///CATEGORIES
 
 /**
@@ -17,7 +21,6 @@ function conexion(){
  */
 function getCategories()
 {
-    
     $connection = conexion();
 
     $sqlCategorias = "SELECT `id`, `name` FROM `categories`;";
@@ -80,7 +83,11 @@ function getAllNewByIdUser($id)
     return $result->fetch_all();
 }
 
-function createNews($title, $shortDescription, $linkNew, $date, $source, $category, $idUser){
+/**
+ * Function create news
+ */
+function createNews($title, $shortDescription, $linkNew, $date, $source, $category, $idUser)
+{
     //title / short_description / perman_link / fecha / news_source_id / user_id / category_id 
     $connection = conexion();
 
@@ -92,7 +99,11 @@ function createNews($title, $shortDescription, $linkNew, $date, $source, $catego
     return $result;
 }
 
-function deleteNews($idSource, $idUser){
+/**
+ * Function delete news
+ */
+function deleteNews($idSource, $idUser)
+{
     //Elimina las noticias
     $sqlDeleteNews = "DELETE FROM `news` WHERE `news_source_id` = $idSource and user_id = $idUser;";
     $connection = conexion();
@@ -107,7 +118,8 @@ function deleteNews($idSource, $idUser){
 /**
  * Valida si existe la fuente.
  */
-function existsSource($source, $categoria, $idUser){
+function existsSource($source, $categoria, $idUser)
+{
     $connection = conexion();
     $boolean = false;
     $sql = "SELECT `id` FROM `news_source` WHERE `name` = '$source' and `category_id` = $categoria and `user_id` = $idUser;";
@@ -127,7 +139,8 @@ function existsSource($source, $categoria, $idUser){
  * Obtiene el identificador
  * de las fuentes.
  */
-function getIdSoruceNews($source, $categoria, $idUser){
+function getIdSoruceNews($source, $categoria, $idUser)
+{
     $connection = conexion();
     $sql = "SELECT `id` FROM `news_source` WHERE `name` = '$source' and `category_id` = $categoria and `user_id` = $idUser;";
 
@@ -142,7 +155,8 @@ function getIdSoruceNews($source, $categoria, $idUser){
 /**
  * Agrega a la base de datos fuentes
  */
-function createSource($url, $name, $cateogoryId, $idUser){
+function createSource($url, $name, $cateogoryId, $idUser)
+{
     //url/name/category_id/user_id 
     $connection = conexion();
 
@@ -151,7 +165,11 @@ function createSource($url, $name, $cateogoryId, $idUser){
     mysqli_query($connection, $sqlCreateSource);
 }
 
-function editSource($idSource, $nameSource, $urlSource, $idCategory){
+/**
+ * Function edit source
+ */
+function editSource($idSource, $nameSource, $urlSource, $idCategory)
+{
     $connection = conexion();
 
     $sqlEditSource = "UPDATE `news_source` SET `url`='$urlSource',`name`='$nameSource',`category_id`= $idCategory WHERE id = $idSource;";
@@ -164,7 +182,8 @@ function editSource($idSource, $nameSource, $urlSource, $idCategory){
  * Elimina fuentes y las noticias
  * relacionadas al mismo.
  */
-function deleteSource($idSource, $idUser ){
+function deleteSource($idSource, $idUser )
+{
     $connection = conexion();
 
     //Elimina las noticias
@@ -179,7 +198,11 @@ function deleteSource($idSource, $idUser ){
 
 }
 
-function getSource($idUser){
+/**
+ * Function get all source by $idUser
+ */
+function getSource($idUser)
+{
     $connection = conexion();
     $sqlGetSource = "SELECT news_source.id, news_source.name, categories.name FROM `news_source` INNER JOIN categories ON categories.id = news_source.category_id AND user_id = $idUser;";
     $resultado = mysqli_query($connection, $sqlGetSource);
@@ -189,7 +212,11 @@ function getSource($idUser){
     return $resultado->fetch_all();
 }
 
-function getInfoSource($idSource, $idUser){
+/**
+ * Function get specific source
+ */
+function getInfoSource($idSource, $idUser)
+{
     $connection = conexion();
     $sqlGetInfoSource = "SELECT * FROM `news_source` WHERE user_id = $idUser AND id = $idSource;";
     $resultado = mysqli_query($connection, $sqlGetInfoSource);
