@@ -13,6 +13,7 @@
   $idUsuario = $user['id'];
   $nameSource = "";
   $urlSource = "";
+  $idCatSource = 0;
 
 //******************************************* */
   
@@ -36,7 +37,7 @@
 
       $nameSource = $infoSource[2];
       $urlSource = $infoSource[1];
-
+      $idCatSource = $$infoSource[3];
     }
   }
   else{
@@ -94,7 +95,7 @@
             <select name="optCategory" id="category">
                 <!--<option disabled selected>Category</option>-->
                 <?php foreach($categorias as $iterador){
-                  if ($iterador[0] == $infoSource[3])
+                  if ($iterador[0] == $idCatSource)
                   {
                     echo "<option selected value= $iterador[1]>$iterador[1]</option>";
                   }
