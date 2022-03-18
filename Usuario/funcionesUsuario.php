@@ -156,9 +156,8 @@ function editSource($idSource, $nameSource, $urlSource, $idCategory){
 
     $sqlEditSource = "UPDATE `news_source` SET `url`='$urlSource',`name`='$nameSource',`category_id`= $idCategory WHERE id = $idSource;";
 
-    echo $sqlEditSource;
-    die;
     mysqli_query($connection, $sqlEditSource);
+    mysqli_close($connection);
 }
 
 /**
