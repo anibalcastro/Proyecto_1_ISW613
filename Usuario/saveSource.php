@@ -21,7 +21,7 @@ if (isset($_POST['btnSave']))
 
             if (!$resultadoExiste){
                 createSource($url, $nameSource, $idCategoria, $idUser);
-                header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/principal.php?status=success&message=inicio";');
+                header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/principal.php?status=success&message=inicio');
             }
             else {
                 header('Location: http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/ceSource.php?status=success&message=existe');

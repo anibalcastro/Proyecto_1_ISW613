@@ -65,13 +65,13 @@ include('funcionesUsuario.php');
     <h1 class="display-4">Your unique News Cover</h1>
     <div class="linea_100"></div>
     <div id="grupoBtn" class="btn-group flex-wrap" role="group" aria-label="Button group with nested dropdown">
-    <a href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/principal.php?status=success&message=inicio";?>" type="button" type="button" class="btn btn-secondary">Portada</a>
+    <a href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/principal.php?status=success&message=inicio"?>" type="button" type="button" class="btn btn-secondary">Portada</a>
     <?php 
     foreach($categorias as $categoria)
     {
     ?>
       
-      <a type="button" class="btn btn-secondary" href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/sources.php?status=success&message=$categoria[0]"; ?>" value="<?php echo $categoria[0]?>"><?php echo "$categoria[1]"?></a>
+      <a type="button" class="btn btn-secondary" href="<?php echo "http://utnweb.com/web2/Proyecto_1_ISW613/Usuario/principal.php?status=success&message=$categoria[0]"; ?>" value="<?php echo $categoria[0]?>"><?php echo "$categoria[1]"?></a>
     <?php
     }
     ?>    
