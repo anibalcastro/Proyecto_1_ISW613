@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Get connection
  */
@@ -69,7 +70,6 @@ function createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, 
 
 //Obtain result
 $sources = getSource();
-
 
 foreach($sources as $source){
     //Get id source 
