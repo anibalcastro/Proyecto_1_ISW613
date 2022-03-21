@@ -1,21 +1,21 @@
 <?php
-
 /**
  * Get connection
  */
-function conexion(){
-    return mysqli_connect('127.0.0.1','root','','mynews');
+function conexion()
+{
+    return mysqli_connect('127.0.0.1', 'root', '', 'mynews');
 }
 
 /**
  * Get all source
  */
-function getSource(){
+function getSource()
+{
     $connection = conexion();
     $sqlGetSource = "SELECT * FROM `news_source`;";
     $resultado = mysqli_query($connection, $sqlGetSource);
     mysqli_close($connection);
-
 
     return $resultado->fetch_all();
 }
@@ -23,7 +23,8 @@ function getSource(){
 /**
  * Get name category
  */
-function getNameCategoryById($idCategory){
+function getNameCategoryById($idCategory)
+{
     $sqlGetCategory = "SELECT `name` FROM `categories` WHERE `id` = $idCategory;";
     $connection = conexion();
 
@@ -38,7 +39,8 @@ function getNameCategoryById($idCategory){
 /**
  * Function validate if news exists
  */
-function existsNews($link, $idUser){
+function existsNews($link, $idUser)
+{
     $boolean = false;
     $sqlExists = "SELECT `id` FROM `news` WHERE `perman_link` = '$link' AND `user_id` = $idUser;";
     $connection = conexion();
@@ -47,7 +49,8 @@ function existsNews($link, $idUser){
 
     $id = $result->fetch_array(MYSQLI_NUM);
 
-    if(!empty($id[0])){
+    if (!empty($id[0]))
+    {
         $boolean = true;
     }
 
@@ -57,22 +60,23 @@ function existsNews($link, $idUser){
 /**
  * Create news
  */
-function createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, $idCategoria, $idUser){
-    //title / short_description / perman_link / fecha / news_source_id / user_id / category_id 
+function createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, $idCategoria, $idUser)
+{
+    //title / short_description / perman_link / fecha / news_source_id / user_id / category_id
     $connection = conexion();
 
     $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$xmlTitle','$xmlDescription','$xmlLink','$dateTime',$idSource,$idUser,$idCategoria);";
-   
-    $result =  mysqli_query($connection, $sqlInsert);
+
+    $result = mysqli_query($connection, $sqlInsert);
     mysqli_close($connection);
 }
-
 
 //Obtain result
 $sources = getSource();
 
-foreach($sources as $source){
-    //Get id source 
+foreach ($sources as $source)
+{
+    //Get id source
     $idSource = $source[0];
     //Get url
     $url = $source[1];
@@ -82,32 +86,38 @@ foreach($sources as $source){
     $idUser = $source[4];
     //Get id category
     $idCategory = $source[3];
-    
 
     $invalidurl = false;
-    if (@simplexml_load_file($url)){
+    if (@simplexml_load_file($url))
+    {
         $feeds = simplexml_load_file($url);
-    }else{
+    }
+    else
+    {
         $invalidurl = true;
-        echo "Invalid RSS feed URL".PHP_EOL;
+        echo "Invalid RSS feed URL" . PHP_EOL;
     }
 
-    if(!empty($feeds)){
-        foreach ($feeds->channel->item as $item)
+    if (!empty($feeds))
+    {
+        foreach ($feeds
+            ->channel->item as $item)
         {
             $xmlTitle = $item->title;
             $xmlLink = $item->link;
             $xmlDescription = $item->description;
             $xmlPubDate = $item->pubDate;
             $xmlCategoria = $item->category;
-            
-            if ($nameCategory == $xmlCategoria){
+
+            if ($nameCategory == $xmlCategoria)
+            {
                 $date = date_create("$xmlPubDate");
                 $dateTime = date_format($date, "Y/m/d H:i:s");
 
                 $existNew = existsNews($xmlLink, $idUser);
 
-                if(!$existNew){
+                if (!$existNew)
+                {
                     createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, $idCategory, $idUser);
                 }
                 /*
@@ -121,13 +131,11 @@ foreach($sources as $source){
                 echo "".PHP_EOL;
                 */
             }
-            
+
         }
     }
 
 }
 
 echo "Noticias Actualizadas";
-
-
 
