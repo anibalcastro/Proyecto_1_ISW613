@@ -23,25 +23,29 @@ if (!$user or $user['role_id'] != 1)
 //nombre de usuario
 $nombreUsuario = $user['first_name'];
 
-if (!empty($_REQUEST['status']))
-{ 
-  //captura el mensaje
-  $message = $_REQUEST['message'];
 
-  if ($message == 'Category-exists'){
-    echo '<script language="javascript">alert("Error la categoria ya existe");</script>';
+  if (!empty($_REQUEST['status']))
+  { 
+    //captura el mensaje
+    $message = $_REQUEST['message'];
+
+    if ($message == 'Category-exists'){
+      echo '<script language="javascript">alert("Error la categoria ya existe");</script>';
+    }
+    else{
+      $id = $message;
+      $resultado = datosCategoria($id);
+      $nombreCategoria = implode($resultado[0]);
+      $accion = "Editar";
+    }
   }
-  else{
-    $id = $message;
-    $resultado = datosCategoria($id);
-    $nombreCategoria = implode($resultado[0]);
-    $accion = "Editar";
+  else
+  {
+    $accion = "Nueva";
   }
-}
-else
-{
-  $accion = "Nueva";
-}
+
+
+
 ?>
 
 <!DOCTYPE html>
