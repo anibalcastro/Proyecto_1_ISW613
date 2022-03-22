@@ -88,18 +88,25 @@ foreach ($sources as $source)
     $idCategory = $source[3];
 
     $invalidurl = false;
+    //Interpreta el xml
     if (@simplexml_load_file($url))
     {
+        //Si es valido lo agrega a la variable $feed.
         $feeds = simplexml_load_file($url);
     }
     else
     {
+        //Si es invalido muestra un mensaje.
         $invalidurl = true;
-        echo "Invalid RSS feed URL" . PHP_EOL;
+        echo "RSS Invalido, identificador ".$idSource." URL=".$url. PHP_EOL;
     }
 
+    //Si no esta vacio accede al ciclo
     if (!empty($feeds))
     {
+        /**
+         * Iteramos el xml, y obtenemos lo que ocupemos.
+         */
         foreach ($feeds
             ->channel->item as $item)
         {
@@ -109,15 +116,21 @@ foreach ($sources as $source)
             $xmlPubDate = $item->pubDate;
             $xmlCategoria = $item->category;
 
+            /**
+             * Compara si la categoria del usuario
+             * es igual a la categoria del xml
+             */
             if ($nameCategory == $xmlCategoria)
             {
+                //Damos formato a la fecha
                 $date = date_create("$xmlPubDate");
                 $dateTime = date_format($date, "Y/m/d H:i:s");
 
                 $existNew = existsNews($xmlLink, $idUser);
-
+                //Validamos si no tiene la noticia ya la tiene el usuario.
                 if (!$existNew)
                 {
+                    //Agrega la noticia
                     createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, $idCategory, $idUser);
                 }
                 /*
