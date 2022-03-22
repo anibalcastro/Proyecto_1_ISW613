@@ -64,9 +64,12 @@ function createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, 
 {
     //title / short_description / perman_link / fecha / news_source_id / user_id / category_id
     $connection = conexion();
+    $title = str_replace("'", "", $xmlTitle);
+    $descripction = str_replace("'", "", $xmlDescription);
 
-    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$xmlTitle','$xmlDescription','$xmlLink','$dateTime',$idSource,$idUser,$idCategoria);";
-
+    $sqlInsert = "INSERT INTO `news`(`title`,`short_description`,`perman_link`,`fecha`,`news_source_id`,`user_id`,`category_id`)VALUES('$title','$descripction','$xmlLink','$dateTime',$idSource,$idUser,$idCategoria);";
+    
+    //echo $sqlInsert;
     $result = mysqli_query($connection, $sqlInsert);
     mysqli_close($connection);
 }
