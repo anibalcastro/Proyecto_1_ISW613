@@ -143,8 +143,11 @@ function mensaje(){
   </footer>
   <!-- Footer -->
   </section>
+
+  <?php
   //JS
-  <?php mensaje(); ?>
+  mensaje(); 
+  ?>
 </body>
 
 </html>
