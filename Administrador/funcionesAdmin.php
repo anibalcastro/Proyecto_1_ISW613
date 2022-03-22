@@ -27,11 +27,17 @@ function datosCategoria($id)
  */
 function eliminarCategoria(&$id)
 {
-    $connection = conexion();
-    $sqlEliminar = "DELETE FROM `categories` WHERE id = $id";
+    try {
+        $connection = conexion();
+        $sqlEliminar = "DELETE FROM `categories` WHERE id = $id";
+    
+        $result = mysqli_query($connection, $sqlEliminar);
+        mysqli_close($connection);
+        return true;
 
-    mysqli_query($connection, $sqlEliminar);
-    mysqli_close($connection);
+    } catch (mysqli_sql_exception $result) {
+        return false;
+    }
 }
 
 /**

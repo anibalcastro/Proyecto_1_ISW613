@@ -13,6 +13,32 @@ include ('funcionesAdmin.php');
 
 $categorias = consultarCategorias();
 
+function mensaje(){
+  if(!empty($_REQUEST['status'])) {
+    //captura el error
+    $mensaje = $_REQUEST['message'];
+
+    switch($mensaje){
+      case "Error":
+        echo '<script language="javascript">alert("Error, la categoria no se puede eliminar");</script>';
+        break;
+      case "Category-was-deleted":
+        echo '<script language="javascript">alert("Categoria eliminada");</script>';
+        break;
+      case "Category-was-modified":
+        echo '<script language="javascript">alert("Categoria modificada");</script>';
+        break;
+      case "Category-was-added":
+        echo '<script language="javascript">alert("Categoria agregada");</script>';
+        break;
+      case "Category-exists":
+        echo '<script language="javascript">alert("Error categoria ya existe");</script>';
+        break;
+    }
+  }
+}
+
+
 ?>
 
 
@@ -117,6 +143,8 @@ $categorias = consultarCategorias();
   </footer>
   <!-- Footer -->
   </section>
+  //JS
+  <?php mensaje(); ?>
 </body>
 
 </html>
