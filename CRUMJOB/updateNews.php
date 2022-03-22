@@ -136,6 +136,7 @@ foreach ($sources as $source)
                     //Agrega la noticia
                     createNews($xmlTitle, $xmlDescription, $xmlLink, $dateTime, $idSource, $idCategory, $idUser);
                 }
+
                 /*
                 echo "Titulo: ". $xmlTitle.PHP_EOL;
                 echo "Link:".$xmlLink.PHP_EOL;
